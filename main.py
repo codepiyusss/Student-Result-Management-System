@@ -51,6 +51,49 @@ def add_student():
 
     print("Student Added Successfully.")
 
+def view_students():
+    if not students:
+        print("No students found.")
+        return
+
+    for student in students:
+        print("-" * 30)
+        print("Roll No:", student.roll_no)
+        print("Name:", student.name)
+        print("Percentage:", round(student.percentage(), 2))
+        print("Grade:", student.grade())
+
+
+def search_student():
+    roll = int(input("Enter Roll Number: "))
+
+    for student in students:
+        if student.roll_no == roll:
+            student.report_card()
+            return
+
+    print("Student Not Found.")
+
+
+def rank_students():
+    if not students:
+        print("No students available.")
+        return
+
+    ranked = sorted(
+        students,
+        key=lambda s: s.percentage(),
+        reverse=True
+    )
+
+    print("\nSTUDENT RANKINGS")
+
+    for rank, student in enumerate(ranked, start=1):
+        print(
+            f"{rank}. {student.name} "
+            f"({student.percentage():.2f}%)"
+        )
+
 
 
 load_data()
