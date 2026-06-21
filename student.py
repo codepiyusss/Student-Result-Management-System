@@ -12,3 +12,9 @@ class Student:
         print(self.roll_no)
         print(self.name)
         print(self.marks)
+
+    def percentage(self):
+        total = sum(self.marks.values())
+        return total / len(self.marks)
+    
+    
